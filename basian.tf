@@ -44,7 +44,7 @@ module "ec2_instance" {
   name = "bastian-instance"
 
   instance_type          = "t2.medium"
-  key_name               = "upgrad_auth"
+  key_name               = "auth"
   monitoring             = true
   subnet_id              = aws_subnet.task_public_subnet_1a.id
 
