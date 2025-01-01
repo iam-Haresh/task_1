@@ -12,7 +12,7 @@ resource "aws_security_group" "bastian" {
   vpc_id      = aws_vpc.task_vpc.id
 
   tags = {
-    Name = "bastian"
+    Name    = "bastian"
     purpose = var.upgrad_tag
   }
 }
@@ -39,17 +39,18 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv6" {
 
 
 module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+  source = "terraform-aws-modules/ec2-instance/aws"
 
   name = "bastian-instance"
 
-  instance_type          = "t2.medium"
-  key_name               = "auth"
-  monitoring             = true
-  subnet_id              = aws_subnet.task_public_subnet_1a.id
+  instance_type               = "t2.medium"
+  key_name                    = "auth"
+  monitoring                  = true
+  associate_public_ip_address = true
+  subnet_id                   = aws_subnet.task_public_subnet_1a.id
 
   tags = {
-    Name = "task_bastian"
+    Name    = "task_bastian"
     purpose = var.upgrad_tag
   }
 }

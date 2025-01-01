@@ -4,7 +4,7 @@ resource "aws_vpc" "task_vpc" {
   instance_tenancy = "default"
 
   tags = {
-    Name = "task_vpc"
+    Name    = "task_vpc"
     purpose = var.upgrad_tag
   }
 }
@@ -13,30 +13,30 @@ resource "aws_internet_gateway" "task_igw" {
   vpc_id = aws_vpc.task_vpc.id
 
   tags = {
-    Name = "task_igw"
+    Name    = "task_igw"
     purpose = var.upgrad_tag
   }
 }
 
 # public subnets 
 resource "aws_subnet" "task_public_subnet_1a" {
-  vpc_id     = aws_vpc.task_vpc.id
-  cidr_block = "10.0.1.0/24"
+  vpc_id            = aws_vpc.task_vpc.id
+  cidr_block        = "10.0.1.0/24"
   availability_zone = "us-east-1a"
 
   tags = {
-    Name = "task_public_subnet_1a"
+    Name    = "task_public_subnet_1a"
     purpose = var.upgrad_tag
   }
 }
 
 resource "aws_subnet" "task_public_subnet_1b" {
-  vpc_id     = aws_vpc.task_vpc.id
-  cidr_block = "10.0.2.0/24"
+  vpc_id            = aws_vpc.task_vpc.id
+  cidr_block        = "10.0.2.0/24"
   availability_zone = "us-east-1b"
 
   tags = {
-    Name = "task_public_subnet_1b"
+    Name    = "task_public_subnet_1b"
     purpose = var.upgrad_tag
   }
 }
@@ -44,45 +44,45 @@ resource "aws_subnet" "task_public_subnet_1b" {
 # private subnets 
 
 resource "aws_subnet" "task_private_subnet_1a_1" {
-  vpc_id     = aws_vpc.task_vpc.id
-  cidr_block = "10.0.3.0/24"
+  vpc_id            = aws_vpc.task_vpc.id
+  cidr_block        = "10.0.3.0/24"
   availability_zone = "us-east-1a"
 
   tags = {
-    Name = "task_private_subnet_1a_1"
+    Name    = "task_private_subnet_1a_1"
     purpose = var.upgrad_tag
   }
 }
 
 resource "aws_subnet" "task_private_subnet_1a_2" {
-  vpc_id     = aws_vpc.task_vpc.id
-  cidr_block = "10.0.4.0/24"
+  vpc_id            = aws_vpc.task_vpc.id
+  cidr_block        = "10.0.4.0/24"
   availability_zone = "us-east-1a"
 
   tags = {
-    Name = "task_private_subnet_1a_2"
+    Name    = "task_private_subnet_1a_2"
     purpose = var.upgrad_tag
   }
 }
 
 resource "aws_subnet" "task_private_subnet_1b_1" {
-  vpc_id     = aws_vpc.task_vpc.id
-  cidr_block = "10.0.5.0/24"
+  vpc_id            = aws_vpc.task_vpc.id
+  cidr_block        = "10.0.5.0/24"
   availability_zone = "us-east-1b"
 
   tags = {
-    Name = "task_private_subnet_1b_1"
+    Name    = "task_private_subnet_1b_1"
     purpose = var.upgrad_tag
   }
 }
 
 resource "aws_subnet" "task_private_subnet_1b_2" {
-  vpc_id     = aws_vpc.task_vpc.id
-  cidr_block = "10.0.6.0/24"
+  vpc_id            = aws_vpc.task_vpc.id
+  cidr_block        = "10.0.6.0/24"
   availability_zone = "us-east-1b"
 
   tags = {
-    Name = "task_private_subnet_1b_1"
+    Name    = "task_private_subnet_1b_1"
     purpose = var.upgrad_tag
   }
 }
@@ -90,7 +90,7 @@ resource "aws_subnet" "task_private_subnet_1b_2" {
 # NAT Gateway
 
 resource "aws_eip" "task_lb" {
-  domain   = "vpc"
+  domain = "vpc"
 }
 
 resource "aws_nat_gateway" "task_ng" {
@@ -98,7 +98,7 @@ resource "aws_nat_gateway" "task_ng" {
   subnet_id     = aws_subnet.task_public_subnet_1a.id
 
   tags = {
-    Name = "task_nat"
+    Name    = "task_nat"
     purpose = var.upgrad_tag
   }
 }
@@ -114,7 +114,7 @@ resource "aws_route_table" "task_igw_rt" {
   }
 
   tags = {
-    Name = "task_rt_igw"
+    Name    = "task_rt_igw"
     purpose = var.upgrad_tag
   }
 }
@@ -128,7 +128,7 @@ resource "aws_route_table" "task_nat_rt" {
   }
 
   tags = {
-    Name = "task_rt_nat"
+    Name    = "task_rt_nat"
     purpose = var.upgrad_tag
   }
 }
