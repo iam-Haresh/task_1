@@ -1,0 +1,1 @@
+automate getting self-ip
