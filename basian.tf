@@ -46,7 +46,7 @@ module "ec2_instance" {
   instance_type          = "t2.medium"
   key_name               = "upgrad_auth"
   monitoring             = true
-  vpc_security_group_ids = aws_security_group.bastian.id
+  vpc_security_group_ids = module.vpc.default_security_group_id
   subnet_id              = aws_subnet.task_public_subnet_1a.id
 
   tags = {
