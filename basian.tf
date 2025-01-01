@@ -42,7 +42,7 @@ module "ec2_instance" {
   source = "terraform-aws-modules/ec2-instance/aws"
 
   name = "bastian-instance"
-
+  ami = "ami-0e2c8caa4b6378d8c"
   instance_type               = "t2.medium"
   key_name                    = "auth"
   monitoring                  = true
