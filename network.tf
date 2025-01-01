@@ -22,6 +22,7 @@ resource "aws_internet_gateway" "task_igw" {
 resource "aws_subnet" "task_public_subnet_1a" {
   vpc_id     = aws_vpc.task_vpc.id
   cidr_block = "10.0.1.0/24"
+  availability_zone = "us-east-1a"
 
   tags = {
     Name = "task_public_subnet_1a"
@@ -32,6 +33,7 @@ resource "aws_subnet" "task_public_subnet_1a" {
 resource "aws_subnet" "task_public_subnet_1b" {
   vpc_id     = aws_vpc.task_vpc.id
   cidr_block = "10.0.2.0/24"
+  availability_zone = "us-east-1b"
 
   tags = {
     Name = "task_public_subnet_1b"
@@ -44,6 +46,7 @@ resource "aws_subnet" "task_public_subnet_1b" {
 resource "aws_subnet" "task_private_subnet_1a_1" {
   vpc_id     = aws_vpc.task_vpc.id
   cidr_block = "10.0.3.0/24"
+  availability_zone = "us-east-1a"
 
   tags = {
     Name = "task_private_subnet_1a_1"
@@ -54,6 +57,7 @@ resource "aws_subnet" "task_private_subnet_1a_1" {
 resource "aws_subnet" "task_private_subnet_1a_2" {
   vpc_id     = aws_vpc.task_vpc.id
   cidr_block = "10.0.4.0/24"
+  availability_zone = "us-east-1a"
 
   tags = {
     Name = "task_private_subnet_1a_2"
@@ -64,6 +68,7 @@ resource "aws_subnet" "task_private_subnet_1a_2" {
 resource "aws_subnet" "task_private_subnet_1b_1" {
   vpc_id     = aws_vpc.task_vpc.id
   cidr_block = "10.0.5.0/24"
+  availability_zone = "us-east-1b"
 
   tags = {
     Name = "task_private_subnet_1b_1"
@@ -74,6 +79,7 @@ resource "aws_subnet" "task_private_subnet_1b_1" {
 resource "aws_subnet" "task_private_subnet_1b_2" {
   vpc_id     = aws_vpc.task_vpc.id
   cidr_block = "10.0.6.0/24"
+  availability_zone = "us-east-1b"
 
   tags = {
     Name = "task_private_subnet_1b_1"
