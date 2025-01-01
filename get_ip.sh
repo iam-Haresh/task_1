@@ -1,3 +1,3 @@
 #!/bin/bash
-IP=$(hostname -I | awk '{print $1}')
+IP=$(curl https://ipv4.icanhazip.com/)
 echo "{\"ip\": \"$IP\"}"
