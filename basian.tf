@@ -1,6 +1,9 @@
-# Get the IPv4 of the machine in runtime
-data "http" "myip" {
-  url = "https://ipv4.icanhazip.com"
+data "external" "ip" {
+  program = ["bash", "get_ip.sh"]
+}
+
+output "local_ip" {
+  value = data.external.ip.result["ip"]
 }
 
 resource "aws_security_group" "bastian" {
@@ -16,7 +19,7 @@ resource "aws_security_group" "bastian" {
 
 resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
   security_group_id = aws_security_group.bastian.id
-  cidr_ipv4         = ["${chomp(data.http.myip.response_body)}/32"]
+  cidr_ipv4         = data.external.ip.result["ip"]
   from_port         = 22
   ip_protocol       = "tcp"
   to_port           = 22
