@@ -4,7 +4,8 @@ resource "aws_vpc" "task_vpc" {
   instance_tenancy = "default"
 
   tags = {
-    Name = var.upgrad_tag
+    Name = "task_vpc"
+    purpose = var.upgrad_tag
   }
 }
 
@@ -12,7 +13,8 @@ resource "aws_internet_gateway" "task_igw" {
   vpc_id = aws_vpc.task_vpc.id
 
   tags = {
-    Name = var.upgrad_tag
+    Name = "task_igw"
+    purpose = var.upgrad_tag
   }
 }
 
@@ -22,7 +24,8 @@ resource "aws_subnet" "task_public_subnet_1a" {
   cidr_block = "10.0.1.0/24"
 
   tags = {
-    Name = var.upgrad_tag
+    Name = "task_public_subnet_1a"
+    purpose = var.upgrad_tag
   }
 }
 
@@ -31,7 +34,8 @@ resource "aws_subnet" "task_public_subnet_1b" {
   cidr_block = "10.0.2.0/24"
 
   tags = {
-    Name = var.upgrad_tag
+    Name = task_public_subnet_1b
+    purpose = var.upgrad_tag
   }
 }
 
@@ -42,7 +46,8 @@ resource "aws_subnet" "task_private_subnet_1a_1" {
   cidr_block = "10.0.3.0/24"
 
   tags = {
-    Name = var.upgrad_tag
+    Name = "task_private_subnet_1a_1"
+    purpose = var.upgrad_tag
   }
 }
 
@@ -51,7 +56,8 @@ resource "aws_subnet" "task_private_subnet_1a_2" {
   cidr_block = "10.0.4.0/24"
 
   tags = {
-    Name = var.upgrad_tag
+    Name = "task_private_subnet_1a_2"
+    purpose = var.upgrad_tag
   }
 }
 
@@ -60,7 +66,8 @@ resource "aws_subnet" "task_private_subnet_1b_1" {
   cidr_block = "10.0.5.0/24"
 
   tags = {
-    Name = var.upgrad_tag
+    Name = "task_private_subnet_1b_1"
+    purpose = var.upgrad_tag
   }
 }
 
@@ -69,7 +76,8 @@ resource "aws_subnet" "task_private_subnet_1b_2" {
   cidr_block = "10.0.6.0/24"
 
   tags = {
-    Name = var.upgrad_tag
+    Name = "task_private_subnet_1b_1"
+    purpose = var.upgrad_tag
   }
 }
 
@@ -84,7 +92,8 @@ resource "aws_nat_gateway" "task_ng" {
   subnet_id     = aws_subnet.task_public_subnet_1a.id
 
   tags = {
-    Name = var.upgrad_tag
+    Name = "task_nat"
+    purpose = var.upgrad_tag
   }
 }
 
@@ -99,7 +108,8 @@ resource "aws_route_table" "task_igw_rt" {
   }
 
   tags = {
-    Name = var.upgrad_tag
+    Name = "task_rt_igw"
+    purpose = var.upgrad_tag
   }
 }
 
@@ -112,7 +122,8 @@ resource "aws_route_table" "task_nat_rt" {
   }
 
   tags = {
-    Name = var.upgrad_tag
+    Name = "task_rt_nat"
+    purpose = var.upgrad_tag
   }
 }
 
