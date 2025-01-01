@@ -48,6 +48,7 @@ module "ec2_instance" {
   monitoring                  = true
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.task_public_subnet_1a.id
+  security_group_id = aws_security_group.bastian.id
 
   tags = {
     Name    = "task_bastian"
