@@ -1,10 +1,10 @@
-data "external" "local_ip" {
-  program = ["bash", "get_ip.sh"]
+# data "external" "local_ip" {
+#   program = ["bash", "get_ip.sh"]
 
-  provisioner "local-exec" {
-    command = "echo 'IP address is: ${self.id}'"
-  }
-}
+#   provisioner "local-exec" {
+#     command = "echo 'IP address is: ${self.id}'"
+#   }
+# }
 
 resource "aws_security_group" "bastian" {
   name        = "bastian"
@@ -19,7 +19,7 @@ resource "aws_security_group" "bastian" {
 
 resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
   security_group_id = aws_security_group.bastian.id
-  cidr_ipv4         = ["${data.external.local_ip.result["ip"]}/32"]
+  cidr_ipv4         = "122.172.84.228/32"
   from_port         = 22
   ip_protocol       = "tcp"
   to_port           = 22
