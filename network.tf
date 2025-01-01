@@ -34,7 +34,7 @@ resource "aws_subnet" "task_public_subnet_1b" {
   cidr_block = "10.0.2.0/24"
 
   tags = {
-    Name = task_public_subnet_1b
+    Name = "task_public_subnet_1b"
     purpose = var.upgrad_tag
   }
 }
