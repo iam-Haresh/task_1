@@ -1,5 +1,9 @@
 data "external" "local_ip" {
   program = ["bash", "get_ip.sh"]
+
+  provisioner "local-exec" {
+    command = "echo 'IP address is: ${self.id}'"
+  }
 }
 
 resource "aws_security_group" "bastian" {
