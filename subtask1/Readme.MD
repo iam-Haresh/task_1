@@ -1,4 +1,4 @@
 Pre req:
 ec2 machine with 
-- Admin Role
+- Role with Admin policy attached to this machine
 - S3 bucket with name "task-tf-state"
