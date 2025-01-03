@@ -28,14 +28,26 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv6_private" {
 }
 
 
-resource "aws_instance" "task_private_1a" {
+resource "aws_instance" "jenkins_host" {
   ami           = "ami-0e2c8caa4b6378d8c"
   instance_type = "t3.medium"
   subnet_id = aws_subnet.task_private_subnet_1a_1.id
   security_groups = [aws_security_group.private_ec2_sg.id]
   key_name = "auth"
   tags = {
-    Name    = "task_private_1a"
+    Name    = "jenkins_host"
+    purpose = var.upgrad_tag
+  }
+}
+
+resource "aws_instance" "jenkins_worker" {
+  ami           = "ami-0e2c8caa4b6378d8c"
+  instance_type = "t3.medium"
+  subnet_id = aws_subnet.task_private_subnet_1a_1.id
+  security_groups = [aws_security_group.private_ec2_sg.id]
+  key_name = "auth"
+  tags = {
+    Name    = "jenkins_worker"
     purpose = var.upgrad_tag
   }
 }
