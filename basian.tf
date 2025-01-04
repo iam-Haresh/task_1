@@ -44,7 +44,7 @@ module "ec2_instance" {
   name = "bastian-instance"
   ami = "ami-0e2c8caa4b6378d8c"
   instance_type               = "t2.medium"
-  key_name                    = "auth"
+  key_name                    = "prac_auth"
   monitoring                  = true
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.task_public_subnet_1a.id
