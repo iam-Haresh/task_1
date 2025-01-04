@@ -19,7 +19,7 @@ resource "aws_security_group" "bastian" {
 
 resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
   security_group_id = aws_security_group.bastian.id
-  cidr_ipv4         = "122.172.84.228/32"
+  cidr_ipv4         = "152.58.252.240/32"
   from_port         = 22
   ip_protocol       = "tcp"
   to_port           = 22
