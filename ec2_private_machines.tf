@@ -40,26 +40,26 @@ resource "aws_instance" "jenkins_host" {
   }
 }
 
-resource "aws_instance" "jenkins_worker" {
+resource "aws_instance" "app" {
   ami           = "ami-0e2c8caa4b6378d8c"
   instance_type = "t3.medium"
   subnet_id = aws_subnet.task_private_subnet_1a_1.id
   security_groups = [aws_security_group.private_ec2_sg.id]
   key_name = "auth"
   tags = {
-    Name    = "jenkins_worker"
+    Name    = "app"
     purpose = var.upgrad_tag
   }
 }
 
-resource "aws_instance" "task_private_1b" {
-  ami           = "ami-0e2c8caa4b6378d8c"
-  instance_type = "t3.medium"
-  subnet_id = aws_subnet.task_private_subnet_1b_1.id
-  security_groups = [aws_security_group.private_ec2_sg.id]
-  key_name = "auth"
-  tags = {
-    Name    = "task_private_1b"
-    purpose = var.upgrad_tag
-  }
-}
+# resource "aws_instance" "task_private_1b" {
+#   ami           = "ami-0e2c8caa4b6378d8c"
+#   instance_type = "t3.medium"
+#   subnet_id = aws_subnet.task_private_subnet_1b_1.id
+#   security_groups = [aws_security_group.private_ec2_sg.id]
+#   key_name = "auth"
+#   tags = {
+#     Name    = "task_private_1b"
+#     purpose = var.upgrad_tag
+#   }
+# }
